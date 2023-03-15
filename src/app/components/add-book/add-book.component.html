@@ -1,0 +1,35 @@
+<div class="add-book-form window">
+    <form (ngSubmit)="onSubmit()" [formGroup]="form">
+        <div class="add-info">
+            <label for="description">Title name</label>
+            <textarea class="textarea" id="description" cols="30" rows="5" formControlName="description"
+                placeholder="enter the description of the book"></textarea>
+        </div>
+        <div class="add-info">
+            <label for="title">Title name</label>
+            <input class="input" id="title" type="text" formControlName="title"
+                placeholder="enter the title of the book">
+        </div>
+        <div class="add-info">
+            <label for="countPages">Number of pages</label>
+            <input class="input" id="countPages" type="number" formControlName="countPages"
+                placeholder="enter the number of pages">
+                <p class="worning" *ngIf="form.controls.countPages.touched && form.controls.countPages.invalid">* this field can only contain numeric values</p>
+        </div>
+        <div class="add-info">
+            <label for="date">Date of publication</label>
+            <input class="input" id="date" type="datetime-local" formControlName="date"
+                placeholder="enter the date of publication">
+        </div>
+
+        <button class="btn close" type="button" (click)="close()">&#x2715;</button>
+
+        <p class="worning" *ngIf="form.controls.countPages.touched && form.controls.date.touched
+         && form.controls.title.touched && form.controls.description.touched &&
+         form.invalid">* all fields must be filled</p>
+
+        <button class="save-btn btn" [disabled]="form.invalid">Save</button>
+
+    </form>
+
+</div>

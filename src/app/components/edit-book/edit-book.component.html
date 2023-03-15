@@ -1,0 +1,44 @@
+<div class="edit-form window">
+    
+        <form (ngSubmit)="onSubmit()" [formGroup]="form" *ngIf="!alertShow else alert">
+            <div class="add-info">
+                <label for="description">Description</label>
+                <textarea class="textarea" id="description" cols="30" rows="7" formControlName="description"
+                    [(ngModel)]="book.description"></textarea>
+            </div>
+            <div class="add-info">
+                <label for="title">Title name</label>
+                <input class="input" id="title" type="text" formControlName="title" [(ngModel)]="book.title">
+            </div>
+            <div class="add-info">
+                <label for="countPages">Number of pages</label>
+                <input class="input" id="countPages" type="number" formControlName="countPages"
+                    [(ngModel)]="book.pageCount">
+                <p class="worning" *ngIf="form.controls.countPages.touched && form.controls.countPages.invalid">* this
+                    field
+                    can only contain numeric values</p>
+            </div>
+            <div class="add-info">
+                <label for="date">Date of publication</label>
+                <input class="input" id="date" type="datetime" formControlName="date"
+                 [(ngModel)]="book.publishDate">
+            </div>
+
+            <button class="btn close" type="button" (click)="close()">&#x2715;</button>
+
+            <p class="worning" *ngIf="form.controls.countPages.touched && form.controls.date.touched
+         && form.controls.title.touched && form.controls.description.touched &&
+         form.invalid">* all fields must be filled</p>
+
+            <button class="save-btn btn" [disabled]="form.invalid">Save</button>
+
+        </form>
+<ng-template #alert>
+    <div class="alert-window" >
+                <p>New book was sucsessful edited!</p>
+                <button class="btn" (click)="close()">Ok</button>
+        </div>
+</ng-template>
+        
+
+</div>

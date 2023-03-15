@@ -1,0 +1,45 @@
+<div class="list-container">
+
+  <router-outlet></router-outlet>
+
+  <div class="list-box-input-sort">
+    <input class="input search-book-input" type="text" name="search" placeholder="search book" #searchText
+      (keyup)="searchBook(searchText)">
+
+    <div class="sort-by-box">
+      <label for="select">Sort by</label>
+      <select class="input sort-by" id="select" #selected (change)="sort(selected)">
+        <option value="title">Name</option>
+        <option value="publishDate">Publish date </option>
+        <option value="pageCount">Number of pages</option>
+      </select>
+    </div>
+
+    <fieldset class="sort-by-ascending-descending">
+      <legend>Sort by Ascending or Descending</legend>
+      <div class="sort-by">
+        <input type="radio" id="ascending" checked ng-value="ascending" name="type" (click)="ascendingSort(selected)">
+        <label for="ascending">Ascending</label>
+      </div>
+      <div class="sort-by">
+        <input type="radio" id="descending" #descending name="type" value="descending"
+          (click)="descendingSort(selected)">
+        <label for="descending">Descending</label>
+      </div>
+    </fieldset>
+
+    <button class="btn add-book" (click)="addBook()">Add book</button>
+
+  </div>
+
+  <p class="list-name">Books list:</p>
+  <div class="list-box">
+    <div class="list-element" *ngFor="let book of showListBooks; index as i" (click)="openWindowDescription(book)"
+      routerLinkActive="active-link">
+      <span class="book-number"><b>{{i+1}}</b> / {{listBooks.length}}</span> <span
+        class="book-name">{{book.title}}</span>
+    </div>
+  </div>
+
+
+</div>

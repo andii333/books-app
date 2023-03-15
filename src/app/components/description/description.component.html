@@ -1,0 +1,22 @@
+<div class="description-container window">
+    <div class="info">
+        <p>Description:</p>
+        <p>{{book.description}}</p>
+    </div>
+    <div class="info">
+        <p>Title name:</p>
+        <p>{{book.title}}</p>
+    </div>
+    <div class="info">
+        <p>Number of pages:</p>
+        <p>{{book.pageCount}}</p>
+    </div>
+    <div class="info">
+        <p>Date of publication:</p>
+        <p>{{book.publishDate | date:'medium'}}</p>
+    </div>
+
+    <button class="close btn" (click)="close()">&#x2715;</button>
+
+    <button class="edit-btn btn" (click)="editBook()">Edit book</button>
+</div>

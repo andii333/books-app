@@ -1,0 +1,16 @@
+<div class="container">
+
+    <header class="header">
+        <button class="btn btn-list" routerLink="/list">Download the list of books</button>
+    </header>
+
+    <main class="main">
+        <app-loading *ngIf="loading"></app-loading>
+        <router-outlet></router-outlet>
+    </main>
+
+    <footer class="footer">
+        Lviv 2022
+    </footer>
+
+</div>
